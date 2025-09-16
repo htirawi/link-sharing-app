@@ -12,18 +12,13 @@ import { formDataToObject } from '@/utils/formData';
 import { getCurrentUser } from '@/utils/session';
 
 export const profileUpdateAction = async (data: FormData) => {
-    console.log('Profile update action started');
     await authCheck();
     const user = await getCurrentUser();
-    console.log('User authenticated:', user?.username);
 
     // Extract File object directly from FormData
     const avatarFile = data.get('avatar') as File | null;
-    console.log('Avatar file from FormData:', avatarFile);
-    console.log('Avatar is File?', avatarFile instanceof File);
     
     const formDataObj = formDataToObject(data);
-    console.log('Form data object:', formDataObj);
     
     const dataObj: ProfileUpdateDtoType & { avatar: File | null } = {
         firstName: formDataObj.firstName as string,
@@ -32,11 +27,6 @@ export const profileUpdateAction = async (data: FormData) => {
         email: formDataObj.email as string,
         avatar: avatarFile,
     };
-    
-    console.log('Data object created:', dataObj);
-    console.log('Avatar is File?', dataObj.avatar instanceof File);
-    console.log('Avatar value:', dataObj.avatar);
-    console.log('Avatar type:', typeof dataObj.avatar);
 
     await profileUpdateDto.validate(dataObj);
 
@@ -46,9 +36,7 @@ export const profileUpdateAction = async (data: FormData) => {
     if (dataObj.avatar instanceof File) {
         try {
             newAvatarUrl = await uploadFile(dataObj.avatar);
-            console.log('Avatar uploaded successfully:', newAvatarUrl);
         } catch (error) {
-            console.error('Avatar upload failed:', error);
             throw new Error('Failed to upload avatar image');
         }
     }
@@ -58,7 +46,6 @@ export const profileUpdateAction = async (data: FormData) => {
         deleteFile(user!.avatar);
 
     // Update user profile
-    console.log('Updating user with avatar URL:', newAvatarUrl);
     const newUser = await prisma.user.update({
         where: { id: user!.id },
         data: {
@@ -66,7 +53,6 @@ export const profileUpdateAction = async (data: FormData) => {
             avatar: newAvatarUrl,
         },
     });
-    console.log('User updated successfully:', newUser);
 
     revalidatePath('/[username]/(authWrapper)', 'layout');
 

@@ -31,26 +31,19 @@ const Page = () => {
         validateOnBlur: true,
         onSubmit: async (values) => {
             try {
-                console.log('Form submitted with values:', values);
-                
                 // Create FormData manually to ensure File objects are preserved
                 const formData = new FormData();
                 formData.append('firstName', values.firstName);
                 formData.append('lastName', values.lastName);
                 formData.append('username', values.username);
                 formData.append('email', values.email);
-                
+
                 // Only append avatar if it's a File
                 if (values.avatar instanceof File) {
                     formData.append('avatar', values.avatar);
-                    console.log('Avatar File appended to FormData:', values.avatar.name, values.avatar.size);
                 }
-                
-                console.log('FormData created manually');
-                
+
                 const res = await profileUpdateAction(formData);
-                console.log('Profile update response:', res);
-                console.log('Avatar in response:', res.avatar);
 
                 formik.setFieldValue('avatar', res.avatar);
                 toast.success('Your profile is updated');
