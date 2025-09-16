@@ -17,17 +17,22 @@ export const profileUpdateAction = async (data: FormData) => {
     const user = await getCurrentUser();
     console.log('User authenticated:', user?.username);
 
+    // Extract File object directly from FormData
+    const avatarFile = data.get('avatar') as File | null;
+    console.log('Avatar file from FormData:', avatarFile);
+    console.log('Avatar is File?', avatarFile instanceof File);
+    
     const formDataObj = formDataToObject(data);
     console.log('Form data object:', formDataObj);
-
-    const dataObj: ProfileUpdateDtoType & { avatar: File } = {
+    
+    const dataObj: ProfileUpdateDtoType & { avatar: File | null } = {
         firstName: formDataObj.firstName as string,
         lastName: formDataObj.lastName as string,
         username: formDataObj.username as string,
         email: formDataObj.email as string,
-        avatar: formDataObj.avatar as unknown as File,
+        avatar: avatarFile,
     };
-
+    
     console.log('Data object created:', dataObj);
     console.log('Avatar is File?', dataObj.avatar instanceof File);
     console.log('Avatar value:', dataObj.avatar);

@@ -10,7 +10,6 @@ import Button from '@/components/button';
 import FileInput from '@/components/input/FileInput';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-import { objectToFormData } from '@/utils/formData';
 import { useRouter } from 'next/navigation';
 
 const initialValues: ProfileUpdateDtoType = {
@@ -33,9 +32,22 @@ const Page = () => {
         onSubmit: async (values) => {
             try {
                 console.log('Form submitted with values:', values);
-                const formData = objectToFormData(values);
-                console.log('FormData created:', formData);
-
+                
+                // Create FormData manually to ensure File objects are preserved
+                const formData = new FormData();
+                formData.append('firstName', values.firstName);
+                formData.append('lastName', values.lastName);
+                formData.append('username', values.username);
+                formData.append('email', values.email);
+                
+                // Only append avatar if it's a File
+                if (values.avatar instanceof File) {
+                    formData.append('avatar', values.avatar);
+                    console.log('Avatar File appended to FormData:', values.avatar.name, values.avatar.size);
+                }
+                
+                console.log('FormData created manually');
+                
                 const res = await profileUpdateAction(formData);
                 console.log('Profile update response:', res);
                 console.log('Avatar in response:', res.avatar);
