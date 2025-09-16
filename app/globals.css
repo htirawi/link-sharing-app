@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* --background: 242 248 252; */
+    --background: 249 252 255;
+    --foreground: 23 23 23;
+    --primary: 99 60 255;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+    @apply font-open-sans text-foreground bg-background text-sm;
+}
+
+@layer base {
+    a,
+    button,
+    span,
+    label {
+        @apply inline-block;
+    }
+    a {
+        @apply transition-all;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
