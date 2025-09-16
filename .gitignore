@@ -184,10 +184,6 @@ $RECYCLE.BIN/
 # *.gif
 # *.svg
 # *.ico
-
-# screenshots (uncomment if you want to ignore)
-# screenshots/*.png
-# screenshots/*.jpg
 # *.mp4
 # *.avi
 # *.mov
@@ -213,6 +209,10 @@ $RECYCLE.BIN/
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
+
+# Screenshots (uncomment if you want to ignore)
+# screenshots/*.png
+# screenshots/*.jpg
 
 # Miscellaneous
 *.pem
