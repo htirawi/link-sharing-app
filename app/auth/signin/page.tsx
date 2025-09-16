@@ -54,8 +54,17 @@ const Page = () => {
 
     useEffect(() => {
         if (!session?.user) return;
-        router.replace(`/${session?.user.username}`);
-    }, [session?.user]);
+        
+        // Check if there's a callback URL in the query params
+        const urlParams = new URLSearchParams(window.location.search);
+        const callbackUrl = urlParams.get('callbackUrl');
+        
+        if (callbackUrl && callbackUrl.startsWith('/')) {
+            router.replace(callbackUrl);
+        } else {
+            router.replace(`/${session?.user.username}`);
+        }
+    }, [session?.user, router]);
 
     return (
         <div className="">

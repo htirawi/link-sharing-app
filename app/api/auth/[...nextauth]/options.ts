@@ -106,6 +106,18 @@ export const authOptions: AuthOptions = {
             session.user = token.user as Omit<User, 'password'>;
             return session;
         },
+        redirect: async ({ url, baseUrl }) => {
+            // If the URL is relative, make it absolute
+            if (url.startsWith('/')) {
+                return `${baseUrl}${url}`;
+            }
+            // If the URL is on the same origin, allow it
+            if (new URL(url).origin === baseUrl) {
+                return url;
+            }
+            // Otherwise, redirect to the base URL
+            return baseUrl;
+        },
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
