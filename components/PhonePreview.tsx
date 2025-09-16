@@ -15,6 +15,9 @@ interface Props {
 }
 
 const PhonePreview = ({ profilePicture, name, email, links }: Props) => {
+    // Debug: Log the profile picture URL
+    console.log('PhonePreview - Profile picture URL:', profilePicture);
+    
     return (
         <div className="sticky top-5">
             <Phone />

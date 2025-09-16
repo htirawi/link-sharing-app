@@ -80,27 +80,25 @@ export const authOptions: AuthOptions = {
             return token;
         },
         session: async ({ session, token }) => {
-            // Only fetch user data if not already in token
-            if (!token.user) {
-                const prismaUser = await prisma.user.findUnique({
-                    where: {
-                        id: token.id as string,
-                    },
-                    select: {
-                        id: true,
-                        firstName: true,
-                        lastName: true,
-                        username: true,
-                        email: true,
-                        avatar: true,
-                        createdAt: true,
-                        updatedAt: true,
-                    },
-                });
+            // Always fetch fresh user data to get latest avatar
+            const prismaUser = await prisma.user.findUnique({
+                where: {
+                    id: token.id as string,
+                },
+                select: {
+                    id: true,
+                    firstName: true,
+                    lastName: true,
+                    username: true,
+                    email: true,
+                    avatar: true,
+                    createdAt: true,
+                    updatedAt: true,
+                },
+            });
 
-                if (prismaUser) {
-                    token.user = prismaUser;
-                }
+            if (prismaUser) {
+                token.user = prismaUser;
             }
 
             session.user = token.user as Omit<User, 'password'>;

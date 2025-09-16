@@ -24,6 +24,9 @@ const Layout = async ({
 
     const links = await getLinks(user.id);
 
+    // Debug: Log the avatar URL
+    console.log('Layout - User avatar URL:', user.avatar);
+
     return (
         <>
             <Navbar />
