@@ -54,7 +54,9 @@ export const profileUpdateAction = async (data: FormData) => {
         },
     });
 
-    revalidatePath('/[username]/(authWrapper)', 'layout');
+    revalidatePath(`/${user!.username}`, 'page');
+    revalidatePath(`/${user!.username}/edit`, 'page');
+    revalidatePath(`/${user!.username}/links`, 'page');
 
     return newUser;
 };

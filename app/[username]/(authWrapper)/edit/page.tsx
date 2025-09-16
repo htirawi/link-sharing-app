@@ -48,6 +48,9 @@ const Page = () => {
                 formik.setFieldValue('avatar', res.avatar);
                 toast.success('Your profile is updated');
 
+                // Force refresh to update the layout with new avatar
+                router.refresh();
+
                 if (user?.username !== res.username) {
                     router.push(`/${res.username}/edit`);
                     formik.setFieldValue('username', res.username);

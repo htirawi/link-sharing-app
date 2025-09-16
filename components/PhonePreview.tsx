@@ -25,6 +25,8 @@ const PhonePreview = ({ profilePicture, name, email, links }: Props) => {
                 alt="profile"
                 height={100}
                 width={100}
+                unoptimized={!!profilePicture}
+                priority
             />
 
             <div className="absolute top-[200px] left-0 text-center w-full">

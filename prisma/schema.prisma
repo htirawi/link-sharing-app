@@ -1,48 +1,48 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider  = "postgresql"
-  url       = env("DATABASE_URL")   // POOLER (PgBouncer, port 6543)
-  directUrl = env("DIRECT_URL")     // DIRECT (port 5432) for migrate/studio
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-    id        String   @id @default(cuid())
-    firstName String
-    lastName  String?
-    username  String   @unique
-    email     String   @unique
-    password  String
-    avatar    String?
-    links     Link[]
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String?
+  username  String   @unique
+  email     String   @unique
+  password  String
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  links     Link[]
 
-    @@index([username])
-    @@index([email])
-    @@index([username, email])
+  @@index([username])
+  @@index([email])
+  @@index([username, email])
 }
 
 model Link {
-    id        String       @id @default(cuid())
-    platform  PlatformType
-    url       String
-    order     Int          @default(0)
-    user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId    String
-    createdAt DateTime     @default(now())
-    updatedAt DateTime     @updatedAt
+  id        String       @id @default(cuid())
+  platform  PlatformType
+  url       String
+  order     Int          @default(0)
+  userId    String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum PlatformType {
-    GITHUB
-    LINKEDIN
-    FACEBOOK
-    TWITTER
-    INSTAGRAM
-    YOUTUBE
-    WEBSITE
-    OTHER
+  GITHUB
+  LINKEDIN
+  FACEBOOK
+  TWITTER
+  INSTAGRAM
+  YOUTUBE
+  WEBSITE
+  OTHER
 }
