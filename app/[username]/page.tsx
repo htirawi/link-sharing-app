@@ -48,7 +48,7 @@ const page = async ({ params }: { params: { username: string } }) => {
                     )}
                     <Button
                         variant="primary"
-                        copy={`${process.env.NEXT_PUBLIC_URL}/${user.username}`}
+                        copy={`${process.env.NEXTAUTH_URL}/${user.username}`}
                     >
                         Share Link
                     </Button>

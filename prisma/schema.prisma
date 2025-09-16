@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")   // POOLER (PgBouncer, port 6543)
+  directUrl = env("DIRECT_URL")     // DIRECT (port 5432) for migrate/studio
 }
 
 model User {

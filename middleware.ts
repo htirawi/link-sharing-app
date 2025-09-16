@@ -13,12 +13,17 @@ export default withAuth(
                     return true;
                 }
 
-                // Allow access to user profile pages (dynamic routes)
+                // Allow access to user profile pages (dynamic routes like /username)
                 if (req.nextUrl.pathname.match(/^\/[^\/]+$/)) {
                     return true;
                 }
 
-                // For protected routes, require authentication
+                // Allow access to authenticated user routes (like /username/links, /username/edit)
+                if (req.nextUrl.pathname.match(/^\/[^\/]+\/(links|edit)$/)) {
+                    return !!token;
+                }
+
+                // For all other protected routes, require authentication
                 return !!token;
             },
         },
