@@ -134,7 +134,7 @@ DevLinks is a professional link-sharing platform that allows users to create per
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/yourusername/devlinks.git
+    git clone https://github.com/htirawi/link-sharing-app.git
     cd devlinks
     ```
 
@@ -335,16 +335,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help, please:
 
--   Open an [issue](https://github.com/yourusername/devlinks/issues)
--   Check the [documentation](https://github.com/yourusername/devlinks/wiki)
--   Contact us at [your-email@example.com](mailto:your-email@example.com)
+-   Open an [issue](https://github.com/htirawi/link-sharing-app/issues)
+-   Check the [documentation](https://github.com/htirawi/link-sharing-app/wiki)
+-   Contact us at [hussein@example.com](mailto:hussein@example.com)
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by [Your Name](https://github.com/yourusername)**
+**Built with ❤️ by [Hussein Tirawi](https://github.com/htirawi)**
 
-[⭐ Star this repo](https://github.com/yourusername/devlinks) • [🐛 Report Bug](https://github.com/yourusername/devlinks/issues) • [💡 Request Feature](https://github.com/yourusername/devlinks/issues)
+[⭐ Star this repo](https://github.com/htirawi/link-sharing-app) • [🐛 Report Bug](https://github.com/htirawi/link-sharing-app/issues) • [💡 Request Feature](https://github.com/htirawi/link-sharing-app/issues)
 
 </div>
