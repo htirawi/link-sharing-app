@@ -12,10 +12,14 @@ import { formDataToObject } from '@/utils/formData';
 import { getCurrentUser } from '@/utils/session';
 
 export const profileUpdateAction = async (data: FormData) => {
+    console.log('Profile update action started');
     await authCheck();
     const user = await getCurrentUser();
+    console.log('User authenticated:', user?.username);
 
     const formDataObj = formDataToObject(data);
+    console.log('Form data object:', formDataObj);
+    
     const dataObj: ProfileUpdateDtoType & { avatar: File } = {
         firstName: formDataObj.firstName as string,
         lastName: formDataObj.lastName as string,
@@ -23,6 +27,9 @@ export const profileUpdateAction = async (data: FormData) => {
         email: formDataObj.email as string,
         avatar: formDataObj.avatar as unknown as File,
     };
+    
+    console.log('Data object created:', dataObj);
+    console.log('Avatar is File?', dataObj.avatar instanceof File);
 
     await profileUpdateDto.validate(dataObj);
 

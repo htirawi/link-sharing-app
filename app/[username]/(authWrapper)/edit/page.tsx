@@ -32,7 +32,12 @@ const Page = () => {
         validateOnBlur: true,
         onSubmit: async (values) => {
             try {
-                const res = await profileUpdateAction(objectToFormData(values));
+                console.log('Form submitted with values:', values);
+                const formData = objectToFormData(values);
+                console.log('FormData created:', formData);
+                
+                const res = await profileUpdateAction(formData);
+                console.log('Profile update response:', res);
 
                 formik.setFieldValue('avatar', res.avatar);
                 toast.success('Your profile is updated');
@@ -42,6 +47,7 @@ const Page = () => {
                     formik.setFieldValue('username', res.username);
                 }
             } catch (err) {
+                console.error('Profile update error:', err);
                 const errorMessage =
                     err instanceof Error
                         ? err.message
