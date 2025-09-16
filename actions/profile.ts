@@ -30,7 +30,13 @@ export const profileUpdateAction = async (data: FormData) => {
     let newAvatarUrl;
 
     if (dataObj.avatar instanceof File) {
-        newAvatarUrl = await uploadFile(dataObj.avatar);
+        try {
+            newAvatarUrl = await uploadFile(dataObj.avatar);
+            console.log('Avatar uploaded successfully:', newAvatarUrl);
+        } catch (error) {
+            console.error('Avatar upload failed:', error);
+            throw new Error('Failed to upload avatar image');
+        }
     }
 
     // if new file uploaded and previous file exists, delete old file

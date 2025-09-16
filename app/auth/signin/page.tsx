@@ -54,11 +54,11 @@ const Page = () => {
 
     useEffect(() => {
         if (!session?.user) return;
-        
+
         // Check if there's a callback URL in the query params
         const urlParams = new URLSearchParams(window.location.search);
         const callbackUrl = urlParams.get('callbackUrl');
-        
+
         if (callbackUrl && callbackUrl.startsWith('/')) {
             router.replace(callbackUrl);
         } else {
