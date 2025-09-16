@@ -337,7 +337,7 @@ If you have any questions or need help, please:
 
 -   Open an [issue](https://github.com/htirawi/link-sharing-app/issues)
 -   Check the [documentation](https://github.com/htirawi/link-sharing-app/wiki)
--   Contact us at [hussein@example.com](mailto:hussein@example.com)
+-   Contact us at [hmtirawi@gmail.com](mailto:hmtirawi@gmail.com)
 
 ---
 
