@@ -107,17 +107,25 @@ DevLinks is a professional link-sharing platform that allows users to create per
 
 <div align="center">
 
-### Dashboard
+### 🔗 Link Management (Mobile View)
+![Link Management Mobile](./screenshots/mobile-links-management.png)
+*Customize your links with drag-and-drop functionality*
 
-![Dashboard](https://via.placeholder.com/800x400/1e40af/ffffff?text=Dashboard+View)
+### 📱 User Profile Preview
+![Profile Preview](./screenshots/mobile-profile-preview.png)
+*Real-time mobile preview of user profiles*
 
-### Mobile Preview
+### 🖥️ Desktop Dashboard
+![Desktop Dashboard](./screenshots/desktop-dashboard.png)
+*Full desktop experience with responsive design*
 
-![Mobile Preview](https://via.placeholder.com/300x600/1e40af/ffffff?text=Mobile+Preview)
+### 🔐 Authentication Pages
+![Sign In Page](./screenshots/signin-page.png)
+*Clean and modern authentication interface*
 
-### Link Management
-
-![Link Management](https://via.placeholder.com/800x400/1e40af/ffffff?text=Link+Management)
+### ⚙️ Profile Settings
+![Profile Settings](./screenshots/profile-settings.png)
+*User profile management with avatar upload*
 
 </div>
 
