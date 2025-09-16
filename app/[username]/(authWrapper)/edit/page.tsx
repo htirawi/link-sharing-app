@@ -35,9 +35,10 @@ const Page = () => {
                 console.log('Form submitted with values:', values);
                 const formData = objectToFormData(values);
                 console.log('FormData created:', formData);
-                
+
                 const res = await profileUpdateAction(formData);
                 console.log('Profile update response:', res);
+                console.log('Avatar in response:', res.avatar);
 
                 formik.setFieldValue('avatar', res.avatar);
                 toast.success('Your profile is updated');
