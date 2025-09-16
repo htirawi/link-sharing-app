@@ -15,8 +15,13 @@ export const profileUpdateAction = async (data: FormData) => {
     await authCheck();
     const user = await getCurrentUser();
 
-    const dataObj = formDataToObject(data) as ProfileUpdateDtoType & {
-        avatar: File;
+    const formDataObj = formDataToObject(data);
+    const dataObj: ProfileUpdateDtoType & { avatar: File } = {
+        firstName: formDataObj.firstName as string,
+        lastName: formDataObj.lastName as string,
+        username: formDataObj.username as string,
+        email: formDataObj.email as string,
+        avatar: formDataObj.avatar as unknown as File,
     };
 
     await profileUpdateDto.validate(dataObj);

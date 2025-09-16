@@ -1,4 +1,4 @@
-type FormDataValue = string | number | boolean | File | Blob;
+type FormDataValue = string | number | boolean | File | Blob | any;
 
 export const objectToFormData = (
     object: Record<string, FormDataValue | FormDataValue[] | null | undefined>,
@@ -22,8 +22,8 @@ export const objectToFormData = (
 
 export const formDataToObject = (
     formData: FormData,
-): Record<string, string | string[] | boolean> => {
-    const object: Record<string, string | string[] | boolean> = {};
+): Record<string, string | (string | File)[] | boolean | File> => {
+    const object: Record<string, string | (string | File)[] | boolean | File> = {};
 
     formData.forEach((value, key) => {
         if (value === 'true') {
@@ -37,7 +37,7 @@ export const formDataToObject = (
         if (key.includes('[]')) {
             const newKey = key.replace('[]', '');
             if (object[newKey] && Array.isArray(object[newKey])) {
-                (object[newKey] as string[]).push(value);
+                (object[newKey] as (string | File)[]).push(value);
             } else {
                 object[newKey] = [value];
             }

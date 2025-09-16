@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     value?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (_e: React.ChangeEvent<HTMLInputElement>) => void;
     classNames?: {
         container?: string;
         input?: string;
